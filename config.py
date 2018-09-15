@@ -5,7 +5,7 @@ class Config:
     '''
     General config parent class
     '''
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://renegade:pitch@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://renegade:blogsite@localhost/blog'
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     # #  email configurations

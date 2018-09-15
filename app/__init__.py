@@ -7,8 +7,13 @@ from flask_bootstrap import Bootstrap
 # import config options form config
 from config import config_options
 
+# SQl toolkit for python
+from flask_sqlalchemy import SQLAlchemy
 
 bootstrap = Bootstrap()
+
+# assign SQLAlcehmy to db
+db = SQLAlchemy()
 
 
 def create_app(config_name):
@@ -20,7 +25,7 @@ def create_app(config_name):
     bootstrap.init_app(app)
 
     # Initializing flask extensions
-    # db.init_app(app)
+    db.init_app(app)
 
     # allows to get settings form config
     app.config.from_object(config_options[config_name])
