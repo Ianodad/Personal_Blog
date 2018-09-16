@@ -20,17 +20,17 @@ def index():
     return render_template('index.html', title=title)
 
 
-@main.route('/blog')
+@main.route('/blog', methods=['GET', 'POST'])
 def blog():
     blogForm = BlogForm()
     title = 'The blog'
 
     if blogForm.validate_on_submit():
-        # title = blogForm.title.data
+        title = blogForm.title.data
         blog = blogForm.blog.data
         date = blogForm.date.data
 
-        new_blog = Blog(blog=blog, posted=date)
+        new_blog = Blog(title=title, blog=blog, posted=date)
         new_blog.save_blog()
 
     blogs = Blog.get_blogs()

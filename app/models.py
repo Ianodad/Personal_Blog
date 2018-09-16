@@ -49,7 +49,7 @@ class Blog(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     blog_id = db.Column(db.Integer)
-    title = (db.String(140))
+    title = db.Column(db.String(140))
     blog = db.Column(db.String())
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     blog_pic_path = (db.String(255))
@@ -58,29 +58,29 @@ class Blog(db.Model):
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
 
     def save_blog(self):
-    '''
-    save blog
-    '''
-    db.session.add(self)
-    db.session.commit()
+        '''
+        save blog
+        '''
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
     def get_blogs(cls):
-    '''
-    get blog from db
-    '''
-    bloges = Blog.query.order-by('-id').all()
+        '''
+        get blog from db
+        '''
+        bloges = Blog.query.order_by('-id').all()
 
-    return bloges
+        return bloges
 
     @classmethod
     def get_blog(cls, id):
-    '''
-    get a blog
-    '''
-    blog = Blog.query.filter_by(id=id).first()
+        '''
+        get a blog
+        '''
+        blog = Blog.query.filter_by(id=id).first()
 
-    return blog
+        return blog
 
 
 class Comment(db.Model):
