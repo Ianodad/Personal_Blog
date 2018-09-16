@@ -57,30 +57,30 @@ class Blog(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
 
-    # def save_blog(self):
-    # '''
-    # save blog
-    # '''
-    # db.session.add(self)
-    # db.session.commit()
+    def save_blog(self):
+    '''
+    save blog
+    '''
+    db.session.add(self)
+    db.session.commit()
 
-    # @classmethod
-    # def get_bloges(cls):
-    # '''
-    # get blog from db
-    # '''
-    # bloges = Blog.query.order-by('-id').all()
+    @classmethod
+    def get_blogs(cls):
+    '''
+    get blog from db
+    '''
+    bloges = Blog.query.order-by('-id').all()
 
-    # return bloges
+    return bloges
 
-    # @classmethod
-    # def get_blog(cls, id):
-    # '''
-    # get a blog
-    # '''
-    # blog = Blog.query.filter_by(id=id).first()
+    @classmethod
+    def get_blog(cls, id):
+    '''
+    get a blog
+    '''
+    blog = Blog.query.filter_by(id=id).first()
 
-    # return blog
+    return blog
 
 
 class Comment(db.Model):
