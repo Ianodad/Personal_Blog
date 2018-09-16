@@ -87,14 +87,13 @@ class Comment(db.Model):
     '''
     Comment model containing user comments
     '''
-
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     tagger = db.Column(db.String(255))
-
+    # foreign key
     blog_id = db.Column(db.Integer, db.ForeignKey("blog.id"))
 
     def save_comment(self):
@@ -102,11 +101,11 @@ class Comment(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_comment(cls, id):
+    def get_comments(cls, id):
         '''
         filter comment by pitch id
         '''
-        comments = Comment.query.filter_by(pitch_id=id).all()
+        comments = Comment.query.filter_by(blog_id=id).all()
         return comments
 
 

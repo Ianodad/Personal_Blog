@@ -15,3 +15,19 @@ class BlogForm(FlaskForm):
                           'placeholder': 'Photo URL'})
     date = DateField('Post Date', format='%Y-%m-%d')
     submit = SubmitField('Submit')
+
+
+class SubscribeForm(FlaskForm):
+    '''
+    Subscription form 
+    '''
+    email = StringField('Your title here', validators=[Required()])
+    submit = SubmitField('SUBSCRIBE!')
+
+
+class CommentForm(FlaskForm):
+    '''
+    Comment form
+    '''
+    comment = StringField('Blog Comment', validators=[Required()])
+    tagger = StringField('Your gamer tag', validators=[Required()])
