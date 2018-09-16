@@ -20,7 +20,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255), unique=True, index=True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    blogs = db.relationship('Blog', backref='user', lazy="dynamic")
+    blogs = db.relationship('Blog', backref='users', lazy="dynamic")
 
     # @property
     # def password(self):
@@ -49,11 +49,12 @@ class Blog(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     blog_id = db.Column(db.Integer)
+    title = (db.String(140))
     blog = db.Column(db.String())
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     blog_pic_path = (db.String(255))
     # end of true feilds
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
 
     # def save_blog(self):
