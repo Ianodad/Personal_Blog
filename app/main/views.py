@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, abort
 # importing main from main blueprint
 from . import main
 # importing database
-from .. import db
+from .. import db, photos
 # b blog impot forms
 from .forms import BlogForm
 # decorator that will user authentication
@@ -29,8 +29,10 @@ def blog():
         title = blogForm.title.data
         blog = blogForm.blog.data
         date = blogForm.date.data
+        pic_url = blogForm.data
 
-        new_blog = Blog(title=title, blog=blog, posted=date)
+        new_blog = Blog(title=title, blog=blog,
+                        posted=date, blog_pic_path=pic_url)
         new_blog.save_blog()
 
     blogs = Blog.get_blogs()

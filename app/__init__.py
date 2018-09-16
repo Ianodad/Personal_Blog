@@ -10,6 +10,9 @@ from config import config_options
 # SQl toolkit for python
 from flask_sqlalchemy import SQLAlchemy
 
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+photos = UploadSet('photos', IMAGES)
+
 bootstrap = Bootstrap()
 
 # assign SQLAlcehmy to db
@@ -29,6 +32,9 @@ def create_app(config_name):
 
     # allows to get settings form config
     app.config.from_object(config_options[config_name])
+
+    # configure UploadSet
+    configure_uploads(app, photos)
 
     # Registering the main blueprint
     from .main import main as main_blueprint

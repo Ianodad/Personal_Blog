@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-
-{% block styles%}
-{{ super() }}
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/journal/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-5C8TGNupopdjruopVTTrVJacBbWqxHK9eis5DB+DYE6RfqIJapdLBRUdaZBTq7mE"
-      crossorigin="anonymous">
-
-{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro %}
 
 {% block content %}
 
 
 <div class="container-fluid">
-    {{title}}
+    <div class="landing conatiner-fluid">
+        
 
+    </div>
+    <div class="home">
+        <h2>WHATS NEW</h2>
+        <div class="blogs d-flex flex-wrap">
+            {{ macro.displayBlogs(blogs) }}
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}
