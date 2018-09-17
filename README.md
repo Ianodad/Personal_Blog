@@ -1,4 +1,4 @@
-# [Gamet Blog](https://)
+# [Gamer Blog](https://)
 ## Gamers blog help update gamers on latest new of games
 ### Sep 14th, 2018
 #### By **[Ian Odhiambo](https://github.com/ianodad)**
