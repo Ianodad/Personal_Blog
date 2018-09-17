@@ -21,7 +21,7 @@ class SubscribeForm(FlaskForm):
     '''
     Subscription form 
     '''
-    email = StringField('BECOME A FOLLOWER', validators=[Required()])
+    email = TextAreaField('BECOME A FOLLOWER', validators=[Required()])
     submit = SubmitField('SUBSCRIBE!')
 
 
@@ -29,5 +29,6 @@ class CommentForm(FlaskForm):
     '''
     Comment form
     '''
-    comment = StringField('Blog Comment', validators=[Required()])
+    comment = TextAreaField('Comment of blog', validators=[Required()])
     tagger = StringField('Your gamer tag', validators=[Required()])
+    submit = SubmitField('Comment')

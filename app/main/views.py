@@ -27,7 +27,7 @@ def index():
         new_sub.save_blog()
 
     blogs = Blog.get_blogs()
-    return render_template('index.html', title=title, subscribe=subscribe, blogs=blogs)
+    return render_template('index.html', title=title, subscribe=subscribe, blogs=blogs ,)
 
 
 @main.route('/blog', methods=['GET', 'POST'])
@@ -63,5 +63,5 @@ def comment(id):
 
     comments = Comment.get_comments(id)
 
-    blogs = Blog.get_blogs()
-    return render_template('blog.html', title=title, blogs=blogs, blogForm=blogForm, comments=comments)
+    blog= Blog.get_blog(id)
+    return render_template('viewblog.html', blog=blog, commentForm=commentForm, comments=comments)

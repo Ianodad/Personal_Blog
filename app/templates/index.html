@@ -13,10 +13,33 @@
 
 
     </div>
-    <div class="home">
+    <div class="home container-fluid">
         <h2>WHATS NEW</h2>
         <div class="blogs d-flex flex-wrap">
-            {{ macro.displayBlogs(blogs) }}
+            {% for blog in blogs %}
+
+            <div class="blogs">
+                <figure class="snip1174 navy col-md-6">
+                    <img src="https://static2.srcdn.com/wordpress/wp-content/uploads/2018/08/Canceled-video-games.jpg"
+                         alt="sq-sample33" />
+                    <figcaption>
+                        <h2>{{blog.title}}</h2>
+                        <p>
+                            {{blog.blog}}
+                        </p>
+                        {%
+                        if
+                        current_user.is_authenticated
+                        %}
+                        <a href="/blog/delete/{{blog.id}}">Delete</a>
+                        <a href="">Edit</a>
+                        {% else %}
+                        <a href="/blog/{{blog.id}}">View More</a>
+                        {%endif%}
+                    </figcaption>
+                </figure>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

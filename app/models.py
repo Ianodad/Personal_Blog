@@ -6,6 +6,8 @@ from datetime import datetime
 
 # used for password hashing
 from werkzeug.security import generate_password_hash, check_password_hash
+from . import login_manager
+
 
 
 class User(UserMixin, db.Model):
