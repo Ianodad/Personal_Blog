@@ -7,7 +7,9 @@
 
 <div class="container-fluid">
     {{title|upper}}
-    {{ wtf.quick_form(blogForm) }}
+    <div class="forms border-1">
+        {{ wtf.quick_form(blogForm) }}
+    </div>
 
     <div class="container-fluid m-4">
         <div class="services d-flex flex-wrap">
