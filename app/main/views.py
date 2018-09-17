@@ -25,7 +25,8 @@ def index():
 
         new_sub.save_blog()
 
-    return render_template('index.html', title=title, subscribe=subscribe)
+    blogs = Blog.get_blogs()
+    return render_template('index.html', title=title, subscribe=subscribe, blogs=blogs)
 
 
 @main.route('/blog', methods=['GET', 'POST'])
