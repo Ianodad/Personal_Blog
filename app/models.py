@@ -22,23 +22,23 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     blogs = db.relationship('Blog', backref='users', lazy="dynamic")
 
-    # @property
-    # def password(self):
-    #     raise AttributeError('You cannot read the password attribute')
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attribute')
 
-    # @password.setter
-    # def password(self, password):
-    #     self.pass_secure = generate_password_hash(password)
+    @password.setter
+    def password(self, password):
+        self.pass_secure = generate_password_hash(password)
 
-    # def verify_password(self, password):
-    #     return check_password_hash(self.pass_secure, password)
+    def verify_password(self, password):
+        return check_password_hash(self.pass_secure, password)
 
     def __repr__(self):
         return f'User {self.username}'
 
-    # @login_manager.user_loader
-    # def load_user(user_id):
-    #     return User.query.get(int(user_id))
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
 
 
 class Blog(db.Model):

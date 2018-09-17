@@ -12,6 +12,7 @@ from flask_wtf import FlaskForm
 # importing class models
 from ..models import Blog, Subscribe, Comment
 
+from flask_login import login_required
 
 @main.route('/')
 def index():
