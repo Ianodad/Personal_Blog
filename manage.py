@@ -11,7 +11,9 @@ from app.models import User, Blog, Comment, Subscribe
 # flash extension for migrating
 from flask_migrate import Migrate, MigrateCommand
 
-app = create_app('development')
+# app = create_app('development')
+app = create_app('production')
+
 
 # difineing a manager to app
 manager = Manager(app)
