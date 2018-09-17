@@ -3,6 +3,8 @@ from flask import render_template, redirect, url_for, abort
 from . import main
 # importing database
 from .. import db, photos
+# importing database
+from .. import db
 # b blog impot forms
 from .forms import BlogForm, SubscribeForm, CommentForm
 # decorator that will user authentication
@@ -13,6 +15,7 @@ from flask_wtf import FlaskForm
 from ..models import Blog, Subscribe, Comment
 
 from flask_login import login_required
+
 
 @main.route('/')
 def index():
@@ -27,7 +30,7 @@ def index():
         new_sub.save_blog()
 
     blogs = Blog.get_blogs()
-    return render_template('index.html', title=title, subscribe=subscribe, blogs=blogs ,)
+    return render_template('index.html', title=title, subscribe=subscribe, blogs=blogs,)
 
 
 @main.route('/blog', methods=['GET', 'POST'])
@@ -63,5 +66,37 @@ def comment(id):
 
     comments = Comment.get_comments(id)
 
-    blog= Blog.get_blog(id)
+    blog = Blog.get_blog(id)
     return render_template('viewblog.html', blog=blog, commentForm=commentForm, comments=comments)
+
+
+@main.route('/comment/delete/<int:id>')
+@login_required
+def delete_comment(id):
+    '''
+    delete comment
+    '''
+    comment = Comment.get_comment(id)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    flash('Blog has been deleted')
+
+    return redirect(url_for('main.blog', id=id))
+
+
+@main.route('/blog/delete/<int:id>')
+@login_required
+def delete_blog(id):
+    '''
+    delete comment
+    '''
+    comment = Comment.get_comment(id)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    flash('Comment has been deleted')
+
+    return redirect(url_for('main.blog', id=id))

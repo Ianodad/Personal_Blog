@@ -9,7 +9,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
 
 
-
 class User(UserMixin, db.Model):
     '''
     user class model with username, passwords
@@ -105,10 +104,19 @@ class Comment(db.Model):
     @classmethod
     def get_comments(cls, id):
         '''
-        filter comment by pitch id
+        get comments by comments id
         '''
         comments = Comment.query.filter_by(blog_id=id).all()
+
         return comments
+
+    @classmethod
+    def get_comment(cls, id):
+        '''
+        gets a single comment
+        '''
+        comment = Comment.query.filter_by(id=id).first()
+        return comment
 
 
 class Subscribe(db.Model):

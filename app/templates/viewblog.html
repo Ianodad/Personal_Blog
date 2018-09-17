@@ -20,14 +20,12 @@
                 if
                 current_user.is_authenticated
                 %}
-                <a href="#"
-                   class="btn btn-primary">Delete Comment</a>
+                <a href="/comment/delete/{{comment.id}}">Delete Comment</a>
                 {%endif%}
                 <div class="card-footer">{{comment.tagger}}</div>
             </div>
             {% endfor %}
         </div>
-
     </div>
 
 
