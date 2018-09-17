@@ -1,0 +1,14 @@
+{% macro displayBlogs(blogs) %}
+
+{% for blog in blogs %}
+<div class="card border-primary mb-3 mr-3"
+     style="width: 200px;">
+    <div class="card-body text-primary">
+        <a href="/blog/{{blog.id}}">
+            <h5 class="card-title">{{blog.title}}</h5>
+        </a>
+    </div>
+</div>
+{% endfor %}
+
+{% endmacro %}

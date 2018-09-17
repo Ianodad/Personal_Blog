@@ -7,25 +7,26 @@
 
 <div class="container-fluid">
     <div class="landing conatiner-fluid d-flex justify-content-center flex-column my-auto">
-        <div class="col-md-4 border-1 text-danger display-4">
+        <div class="col-md-4 border-1 text-danger display-4 ml-4 pl-4">
             {{ wtf.quick_form(subscribe) }}
         </div>
 
 
     </div>
     <div class="home container-fluid">
-        <h2>WHATS NEW</h2>
+        <h2 class=" display-4 text-center">WHATS NEW</h2>
         <div class="blogs d-flex flex-wrap">
             {% for blog in blogs %}
 
-            <div class="blogs">
-                <figure class="snip1174 navy col-md-6">
+            <div class="blogs d-flex justify-content-center">
+                <figure class="snip1174"
+                        style="width:25em">
                     <img src="https://static2.srcdn.com/wordpress/wp-content/uploads/2018/08/Canceled-video-games.jpg"
                          alt="sq-sample33" />
                     <figcaption>
-                        <h2>{{blog.title}}</h2>
+                        <h2><u>{{blog.title| upper}}</u></h2>
                         <p>
-                            {{blog.blog}}
+                            {{blog.blog |truncate(100)}}
                         </p>
                         {%
                         if

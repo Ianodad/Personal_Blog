@@ -20,7 +20,17 @@
 
 
 .blogs {
-    width: 100em;
+    background-image: url('../images/hexagon.jpg');
+    min-height: 300px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    background-color: #962d22;
 }
 
 figure.snip1174 {

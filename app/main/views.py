@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, abort
+from flask import render_template, redirect, url_for, abort, flash
 # importing main from main blueprint
 from . import main
 # importing database
@@ -34,6 +34,7 @@ def index():
 
 
 @main.route('/blog', methods=['GET', 'POST'])
+@login_required
 def blog():
     blogForm = BlogForm()
     title = 'The blog'
@@ -47,6 +48,8 @@ def blog():
         new_blog = Blog(title=title, blog=blog,
                         posted=date, blog_pic_path=pic_url)
         new_blog.save_blog()
+
+        return redirect(url_for('main.index', id=id))
 
     blogs = Blog.get_blogs()
     return render_template('blog.html', title=title, blogs=blogs, blogForm=blogForm)
@@ -83,20 +86,20 @@ def delete_comment(id):
 
     flash('Blog has been deleted')
 
-    return redirect(url_for('main.blog', id=id))
+    return redirect(url_for('main.index', id=id))
 
 
 @main.route('/blog/delete/<int:id>')
 @login_required
 def delete_blog(id):
     '''
-    delete comment
+    delete blog
     '''
-    comment = Comment.get_comment(id)
+    blog = Blog.get_blog(id)
 
-    db.session.delete(comment)
+    db.session.delete(blog)
     db.session.commit()
 
     flash('Comment has been deleted')
 
-    return redirect(url_for('main.blog', id=id))
+    return redirect(url_for('main.index', id=id))
