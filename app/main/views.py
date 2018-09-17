@@ -16,16 +16,16 @@ from ..models import Blog, Subscribe, Comment
 @main.route('/')
 def index():
     title = 'Home is best'
-    subscribeForm = SubscribeForm
+    subscribe = SubscribeForm()
 
-    if subscribeForm.validate_on_submit():
-        email = subscribeForm.title.data
+    if subscribe.validate_on_submit():
+        email = subscribe.title.data
 
         new_sub = Subscribe(email=email)
 
         new_sub.save_blog()
 
-    return render_template('index.html', title=title)
+    return render_template('index.html', title=title, subscribe=subscribe)
 
 
 @main.route('/blog', methods=['GET', 'POST'])

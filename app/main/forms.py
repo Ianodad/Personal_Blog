@@ -21,7 +21,7 @@ class SubscribeForm(FlaskForm):
     '''
     Subscription form 
     '''
-    email = StringField('Your title here', validators=[Required()])
+    email = StringField('BECOME A FOLLOWER', validators=[Required()])
     submit = SubmitField('SUBSCRIBE!')
 
 
