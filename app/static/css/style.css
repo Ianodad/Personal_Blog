@@ -1,5 +1,5 @@
 .landing {
-    background-image: url('../images/Hitman.jpg');
+    background-image: url('../photos/Hitman.jpg');
 
     /* Set a specific height */
     min-height: 900px;
@@ -20,7 +20,7 @@
 
 
 .blogs {
-    background-image: url('../images/hexagon.jpg');
+    background-image: url('../photos/hexagon.jpg');
     min-height: 300px;
 
     background-attachment: fixed;
