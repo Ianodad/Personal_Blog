@@ -4,7 +4,7 @@ from ..models import User
 # importing database form SQLalchemy
 from .. import db
 # from flask import login user
-from flask_login import login_user, logout_user, login_required,current_user
+from flask_login import login_user, logout_user, login_required, current_user
 # auth blueprint
 from . import auth
 # form for registrating form
