@@ -11,8 +11,8 @@ class BlogForm(FlaskForm):
     '''
     title = StringField('Your title here', validators=[Required()])
     blog = TextAreaField('Your Post here', validators=[Required()])
-    pic_url = StringField('Photo URL', validators=[Required()], render_kw={
-                          'placeholder': 'Photo URL'})
+    # pic_url = StringField('Photo URL', validators=[Required()], render_kw={
+    #                       'placeholder': 'Photo URL'})
     date = DateField('Post Date', format='%Y-%m-%d')
     submit = SubmitField('Submit')
 

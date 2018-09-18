@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, abort, flash
 # importing main from main blueprint
 from . import main
 # importing database
-from .. import db, photos
+from .. import db  # , photos
 # importing database
 from .. import db
 # b blog impot forms
@@ -43,10 +43,10 @@ def blog():
         title = blogForm.title.data
         blog = blogForm.blog.data
         date = blogForm.date.data
-        pic_url = blogForm.data
+        # pic_url = blogForm.data
 
         new_blog = Blog(title=title, blog=blog,
-                        posted=date, blog_pic_path=pic_url)
+                        posted=datel)
         new_blog.save_blog()
 
         return redirect(url_for('main.index', id=id))

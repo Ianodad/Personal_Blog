@@ -53,7 +53,7 @@ class Blog(db.Model):
     title = db.Column(db.String(140))
     blog = db.Column(db.String())
     posted = db.Column(db.DateTime, default=datetime.utcnow)
-    blog_pic_path = (db.String(255))
+    # blog_pic_path = (db.String(255))
     # end of true feilds
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
