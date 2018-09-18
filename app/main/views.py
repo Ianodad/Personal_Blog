@@ -46,7 +46,7 @@ def blog():
         # pic_url = blogForm.data
 
         new_blog = Blog(title=title, blog=blog,
-                        posted=datel)
+                        posted=date)
         new_blog.save_blog()
 
         return redirect(url_for('main.index', id=id))
